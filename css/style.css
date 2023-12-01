@@ -4,6 +4,11 @@
   box-sizing: border-box;
   user-select: none;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  display: none;
+}
+
 .matrixInputs {
   display: flex;
   justify-content: space-between;
@@ -33,6 +38,7 @@ input[type="number"] {
   width: 15%;
   align-self: flex-end;
   height: 22px;
+  text-align: center;
   font-size: 18px;
 }
 
@@ -49,40 +55,61 @@ button:active {
   color: white;
   transform: scale(0.99);
 }
-p{
+p {
   margin: 1% 3% 0 3%;
   text-transform: capitalize;
   color: rgb(165, 64, 64);
 }
-strong{
+strong {
   font-size: 18px;
   text-decoration: underline;
   color: red;
 }
-.output{
-    display: flex;
-    justify-content: space-around;
-    gap: 20%;
-    padding: 4px;
+.output {
+  display: flex;
+  justify-content: space-around;
+  gap: 20%;
+  padding: 4px;
 }
 
-.matrix1table{
-    margin-top: 70px;
+.matrix1table {
+  margin-top: 20px;
+  visibility:hidden;
 }
-.matrix2table{
-    margin-top: 70px;
+.matrix2table {
+  margin-top: 20px;
+  visibility: hidden;
+}
+.resultantMatrix {
+  margin-top: 30px;
+  margin-left: 46%;
+}
+caption {
+  font-size: 18px;
+  font-weight: 500;
 }
 
-table{
-    border-collapse: collapse;
-    text-align: center;
-    font-size: 22px;
-    font-weight: 700;
+table {
+  border-collapse: collapse;
+  text-align: center;
+}
+.cellInput {
+  width: 70px !important;
+  height: 60px !important;
+  text-align: center;
+  font-size: 24px;
+}
+tr {
+  height: 60px;
+}
+td {
+  width: 70px;
 }
 
-tr{
-    height: 60px;
-}
-td{
-    width: 70px;
+#resultbutton{
+  font-size: 16px;
+  height: 25px;
+  width: 78px;
+  margin-left: calc(50% - 39px);
+  /* visibility: hidden; */
 }
