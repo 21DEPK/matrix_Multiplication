@@ -3,8 +3,10 @@ const matrix1Button = document.querySelector("#matrix1");
 const matrix2Button = document.querySelector("#matrix2");
 const matrix1Table = document.querySelector(".matrix1table table");
 const matrix2Table = document.querySelector(".matrix2table table");
+const resultantMatrix = document.querySelector(".resultantMatrix table");
 let matrix1 = new Array();
 let matrix2 = new Array();
+let resultValues = new Array();
 
 function getValue() {
   r1 = document.querySelector("#matrix1_rows").value;
@@ -37,11 +39,12 @@ function createTable2() {
     let row = document.createElement("tr");
     for (let j = 0; j < c2; j++) {
       let column = document.createElement("td");
-      column.innerHTML = `<input type="number" id="t1${i}${j}" class="cellInput"/> `;
+      column.innerHTML = `<input type="number" id="t2${i}${j}" class="cellInput"/> `;
       row.appendChild(column);
     }
     matrix2Table.appendChild(row);
   }
+  resultantMatrix.style.visibility = "visible";
 }
 
 function removePreviousTable(t) {
@@ -50,12 +53,64 @@ function removePreviousTable(t) {
   }
 }
 
-function result() {
-  let result = new Array();
+function getMatrix1Values() {
+  matrix1 = [];
   for (let i = 0; i < r1; i++) {
-    result[i] = [];
+    let temp = [];
+    for (let j = 0; j < c1; j++) {
+      temp.push(document.querySelector(`#t1${i}${j}`).value);
+    }
+    matrix1.push(temp);
+  }
+}
+function getMatrix2Values() {
+  matrix2 = [];
+  for (let i = 0; i < r2; i++) {
+    let temp = [];
     for (let j = 0; j < c2; j++) {
-      result[i][j] = j;
+      temp.push(document.querySelector(`#t2${i}${j}`).value);
+    }
+    matrix2.push(temp);
+  }
+}
+function getResultantMatrixValues() {
+  resultValues = [];
+  for (let i = 0; i < r1; i++) {
+    let temp = [];
+    resultValues.push(temp);
+    for (let j = 0; j < c2; j++) {
+      resultValues[i][j] = 0;
+      for (let k = 0; k < c2; k++) {
+        resultValues[i][j] =
+          resultValues[i][j] +
+          parseInt(parseInt(matrix1[i][k]) * parseInt(matrix2[k][j]));
+      }
     }
   }
+}
+
+function setResultValues() {
+  for (let i = 0; i < r2; i++) {
+    for (let j = 0; j < c2; j++) {
+      document.querySelector(`#r1${i}${j}`).value = resultValues[i][j];
+    }
+  }
+}
+
+function result() {
+  resultantMatrix.style.visibility = "visible";
+  getMatrix1Values();
+  getMatrix2Values();
+  getResultantMatrixValues();
+  removePreviousTable(resultantMatrix);
+  for (let i = 0; i < r1; i++) {
+    let row = document.createElement("tr");
+    for (let j = 0; j < c2; j++) {
+      let column = document.createElement("td");
+      column.innerHTML = `<input type="number" id="r1${i}${j}" class="cellInput" disabled/>`;
+      row.appendChild(column);
+    }
+    resultantMatrix.appendChild(row);
+  }
+  setResultValues();
 }

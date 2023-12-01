@@ -74,7 +74,7 @@ strong {
 
 .matrix1table {
   margin-top: 20px;
-  visibility:hidden;
+  visibility: hidden;
 }
 .matrix2table {
   margin-top: 20px;
@@ -82,7 +82,8 @@ strong {
 }
 .resultantMatrix {
   margin-top: 30px;
-  margin-left: 46%;
+  margin-left: 40%;
+  visibility: hidden;
 }
 caption {
   font-size: 18px;
@@ -106,10 +107,10 @@ td {
   width: 70px;
 }
 
-#resultbutton{
+#resultbutton {
   font-size: 16px;
   height: 25px;
   width: 78px;
   margin-left: calc(50% - 39px);
-  /* visibility: hidden; */
+  visibility: hidden;
 }
