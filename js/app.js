@@ -44,7 +44,7 @@ function createTable2() {
     }
     matrix2Table.appendChild(row);
   }
-  resultantMatrix.style.visibility = "visible";
+  document.querySelector("#resultbutton").style.visibility = "visible";
 }
 
 function removePreviousTable(t) {
